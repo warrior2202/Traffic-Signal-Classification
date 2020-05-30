@@ -1,5 +1,4 @@
 ## Project: Build a Traffic Sign Recognition Program
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 #**Traffic Sign Recognition**
 **Build a Traffic Sign Recognition Project**
@@ -37,7 +36,7 @@ The code for this step is contained in the third code cell of the IPython notebo
 
 Here is a random image from the training set
 
-![Image from training set](FiguresForWriteUp/RandomTrainingSetImage.png)
+![Image from training set](RandomTrainingSetImage.png)
 
 
 ###Design and Test a Model Architecture
@@ -48,12 +47,12 @@ The code for this step is contained in the fourth code cell of the IPython noteb
 
 The first thing I noticed about the images in the training set was that some of them contained really dark pixels. It was hard to distinguish the traffic sign from the background in many cases. The natural next step seemed to be to improve the contrast of these images. I used histogram equalization on each of the color channels to achieve this. Below is an example of the original image and the image after histogram equalization.
 
-![Image before equalization](FiguresForWriteUp/OriginalImage.png)
-![Image after equalization](FiguresForWriteUp/EqualizedImage.png)
+![Image before equalization](OriginalImage.png)
+![Image after equalization](EqualizedImage.png)
 
 The next thought was to make it easier on the neural network to identify certain features such as lines and edges. These are color independent features. They can be easily identified using a gray scale image. Thus, the next step in data pre-processing was to convert the images to gray scale. Below is an example of an image converted to gray scale.
 
-![Gray scale image](FiguresForWriteUp/GrayScaleImage.png)
+![Gray scale image](GrayScaleImage.png)
 
 However, the gray scale image alone is not enough to classify the traffic signs, as the color of the traffic sign gives it a specific meaning. So, I added the gray scale image as an addition channel to the existing R,G,B channels.
 
@@ -66,7 +65,7 @@ The sixth code cell of the IPython notebook contains the code for augmenting the
 
 The following is an example of an image with median blur applied to it:
 
-![Augmented Image](FiguresForWriteUp/AugmentedImage.png)
+![Augmented Image](AugmentedImage.png)
 
 ####3. Modified LeNet model definition for traffic sign classification
 
