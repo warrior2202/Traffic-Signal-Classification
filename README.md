@@ -1,4 +1,5 @@
-
+## Project: Build a Traffic Sign Recognition Program
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 #**Traffic Sign Recognition**
 **Build a Traffic Sign Recognition Project**
@@ -9,6 +10,14 @@ This project aims at using neural networks to design a traffic sign classifier.
 4. The trained model is then tested on a test data set and also on five new traffic sign images found on the web.
 
 Read on to know more about each of these steps.
+## Rubric Points
+###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+
+---
+###Writeup / README
+
+####1. This write-up gives an in-depth explanation of each stage of the project and links it to the respective section in the project code.
+Here is a link to my [project code](https://github.com/preethi2205/TrafficSignClassification/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ###Data Set Summary & Exploration
 
@@ -28,7 +37,7 @@ The code for this step is contained in the third code cell of the IPython notebo
 
 Here is a random image from the training set
 
-![Image from training set](RandomTrainingSetImage.png)
+![Image from training set](FiguresForWriteUp/RandomTrainingSetImage.png)
 
 
 ###Design and Test a Model Architecture
@@ -39,12 +48,12 @@ The code for this step is contained in the fourth code cell of the IPython noteb
 
 The first thing I noticed about the images in the training set was that some of them contained really dark pixels. It was hard to distinguish the traffic sign from the background in many cases. The natural next step seemed to be to improve the contrast of these images. I used histogram equalization on each of the color channels to achieve this. Below is an example of the original image and the image after histogram equalization.
 
-![Image before equalization](OriginalImage.png)
-![Image after equalization](EqualizedImage.png)
+![Image before equalization](FiguresForWriteUp/OriginalImage.png)
+![Image after equalization](FiguresForWriteUp/EqualizedImage.png)
 
 The next thought was to make it easier on the neural network to identify certain features such as lines and edges. These are color independent features. They can be easily identified using a gray scale image. Thus, the next step in data pre-processing was to convert the images to gray scale. Below is an example of an image converted to gray scale.
 
-![Gray scale image](GrayScaleImage.png)
+![Gray scale image](FiguresForWriteUp/GrayScaleImage.png)
 
 However, the gray scale image alone is not enough to classify the traffic signs, as the color of the traffic sign gives it a specific meaning. So, I added the gray scale image as an addition channel to the existing R,G,B channels.
 
@@ -57,7 +66,7 @@ The sixth code cell of the IPython notebook contains the code for augmenting the
 
 The following is an example of an image with median blur applied to it:
 
-![Augmented Image](AugmentedImage.png)
+![Augmented Image](FiguresForWriteUp/AugmentedImage.png)
 
 ####3. Modified LeNet model definition for traffic sign classification
 
@@ -115,8 +124,8 @@ An iterative approach was chosen to get a high training and validation accuracy.
 * There were still noticeable ups and downs in the validation loss curves. This could possibly be due to largely varying weights. In order to prevent this, I added a L2 regularization term (on the final layer weights) to the loss function.
 * The final step was to do data augmentation on the training data set. Augmenting the data set with blurred versions of the images improved the validation accuracy to about 95%.
 * The following figures show the plot of training and validation accuracy and loss with respect to each epoch.
-* ![Training and validation accuracy](FinalAccuracy.png)
-* ![Training and validation loss](FinalLoss.png)
+* ![Training and validation accuracy](FiguresForWriteUp/FinalAccuracy.png)
+* ![Training and validation loss](FiguresForWriteUp/FinalLoss.png)
 
 ###Test a Model on New Images
 
@@ -124,8 +133,8 @@ An iterative approach was chosen to get a high training and validation accuracy.
 
 Here are six German traffic signs that I found on the web:
 
-![Bumpy Road](NewImages/BumpyRoad_22.jpg) ![Children Crossing](NewImages/ChildrenCrossing_28.jpg) ![No Entry](NewImages/NoEntry_17.jpg)
-![Right of way at next intersection](NewImages/RightOfWayAtNextIntersection_11.jpg) ![50 kph speed limit](NewImages/SpeedLimit50_2.jpg) ![Wild animal crossing](NewImages/WildAnimalCrossing_31.jpg)
+![Bumpy Road](BumpyRoad_22.jpg) ![Children Crossing](ChildrenCrossing_28.jpg) ![No Entry](NoEntry_17.jpg) 
+![Right of way at next intersection](RightOfWayAtNextIntersection_11.jpg) ![50 kph speed limit](SpeedLimit50_2.jpg) ![Wild animal crossing](WildAnimalCrossing_31.jpg)
 
 The bumpy road, Children Crossing, Right of way at next intersection and Wild animal crossing all have complex (non-linear) shapes that can be difficult for the neural network to classify. The speed limit sign was chosen as an easier bench mark test. The no entry sign has some noise in the background that can make it difficult to be classified.
 
